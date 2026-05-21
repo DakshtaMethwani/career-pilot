@@ -10,7 +10,7 @@ import TokenUsage from '../models/TokenUsage.model.js';
  */
 export const trackTokenUsage = async (userId, provider, service, usage) => {
   try {
-    if (!usage || !userId) return;
+    if (!usage || !userId || !provider || !service) return;
 
     await TokenUsage.create({
       userId,
