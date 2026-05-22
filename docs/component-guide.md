@@ -1,3 +1,4 @@
+````md
 # Frontend Component Style Guide
 
 ## Overview
@@ -10,15 +11,15 @@ This guide serves as a centralized reference for reusable frontend components an
 
 ---
 
-# Button Component
+## Button Component
 
-File Reference:
+### File Reference
 
 ```text
 frontend/src/components/Button.jsx
 ```
 
-## Supported Variants
+### Supported Variants
 
 - `primary`
 - `secondary`
@@ -27,14 +28,14 @@ frontend/src/components/Button.jsx
 - `ghost`
 - `gradient`
 
-## Supported Sizes
+### Supported Sizes
 
 - `sm`
 - `default`
 - `lg`
 - `xl`
 
-## Features
+### Features
 
 - Loading state support
 - Disabled state handling
@@ -43,7 +44,7 @@ frontend/src/components/Button.jsx
 - Reusable styling through `className`
 - Consistent rounded design system
 
-## Example Usage
+### Example Usage
 
 ```jsx
 <Button variant="primary" size="default">
@@ -51,7 +52,7 @@ frontend/src/components/Button.jsx
 </Button>
 ```
 
-## Styling Guidelines
+### Styling Guidelines
 
 - Use `primary` for major actions
 - Use `secondary` for optional actions
@@ -60,7 +61,7 @@ frontend/src/components/Button.jsx
 - Maintain consistent spacing and typography
 - Prefer reusable variants over inline styles
 
-## Animation Patterns
+### Animation Patterns
 
 Buttons use subtle motion interactions:
 
@@ -73,15 +74,15 @@ Transitions are configured using spring animations for smoother interaction feed
 
 ---
 
-# Input Component
+## Input Component
 
-File Reference:
+### File Reference
 
 ```text
 frontend/src/components/Input.jsx
 ```
 
-## Features
+### Features
 
 - Label support
 - Required field indicators
@@ -90,20 +91,20 @@ frontend/src/components/Input.jsx
 - Focus ring styling
 - Reusable class extension support
 
-## Example Usage
+### Example Usage
 
 ```jsx
 <Input label="Email" type="email" name="email" placeholder="Enter your email" />
 ```
 
-## Validation Guidelines
+### Validation Guidelines
 
 - Always provide meaningful labels
 - Use validation messages for errors
 - Highlight invalid fields clearly
 - Maintain accessible form structures
 
-## Styling Patterns
+### Styling Patterns
 
 The component uses:
 
@@ -115,22 +116,22 @@ The component uses:
 
 ---
 
-# Card Component
+## Card Component
 
-File Reference:
+### File Reference
 
 ```text
 frontend/src/components/Card.jsx
 ```
 
-## Features
+### Features
 
 - Reusable container wrapper
 - Consistent spacing and shadows
 - Glassmorphism-inspired backdrop blur
 - Extendable through `className`
 
-## Example Usage
+### Example Usage
 
 ```jsx
 <Card>
@@ -138,7 +139,7 @@ frontend/src/components/Card.jsx
 </Card>
 ```
 
-## Styling Guidelines
+### Styling Guidelines
 
 Cards use:
 
@@ -151,15 +152,15 @@ Maintain consistent spacing between cards and avoid excessive nesting.
 
 ---
 
-# Floating Action Button (FAB)
+## Floating Action Button (FAB)
 
-File Reference:
+### File Reference
 
 ```text
 frontend/src/components/FAB.jsx
 ```
 
-## Features
+### Features
 
 - Expandable quick-action menu
 - Framer Motion animations
@@ -167,14 +168,14 @@ frontend/src/components/FAB.jsx
 - Keyboard accessibility support
 - Action-based floating menu system
 
-## Supported Actions
+### Supported Actions
 
 - Create Portfolio
 - Upload Resume
 - Search Jobs
 - Start Interview
 
-## Accessibility Patterns
+### Accessibility Patterns
 
 The component includes:
 
@@ -183,7 +184,7 @@ The component includes:
 - keyboard escape handling
 - menu roles
 
-## Animation Guidelines
+### Animation Guidelines
 
 The FAB uses:
 
@@ -195,35 +196,36 @@ Maintain subtle motion and avoid excessive animation complexity.
 
 ---
 
-# General Frontend Guidelines
+## General Frontend Guidelines
 
-## Component Reusability
+### Component Reusability
 
 - Reuse shared components whenever possible
 - Avoid duplicate UI implementations
 - Extend existing components before creating new ones
 
-## Styling Consistency
+### Styling Consistency
 
 - Use utility-first styling consistently
 - Maintain spacing and typography standards
 - Prefer reusable variants over inline styling
 
-## Accessibility
+### Accessibility
 
 - Use semantic HTML elements
 - Provide labels and ARIA attributes
 - Ensure keyboard navigation support
 
-## Animation Principles
+### Animation Principles
 
 - Keep transitions smooth and lightweight
 - Use motion to improve UX, not distract users
 - Maintain consistent animation timing across components
 
-## Recommended Practices
+### Recommended Practices
 
 - Keep components modular
 - Use descriptive prop names
 - Maintain consistent file structure
 - Keep UI responsive and accessible
+````
