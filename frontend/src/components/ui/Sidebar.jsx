@@ -7,6 +7,12 @@ import { Menu, X } from "lucide-react";
 import { SidebarContext } from "../../context/SidebarContext";
 
 // Internal convenience — components within this file consume the context directly.
+/**
+ * Internal custom hook to retrieve the Sidebar context.
+ * Throws an error if used outside a SidebarProvider.
+ *
+ * @returns {object} The Sidebar context object.
+ */
 function useSidebarInternal() {
     const context = useContext(SidebarContext);
     if (!context) {
@@ -15,6 +21,16 @@ function useSidebarInternal() {
     return context;
 }
 
+/**
+ * Context Provider component that wraps children and holds state for the Sidebar.
+ *
+ * @param {object} props - The component props.
+ * @param {React.ReactNode} props.children - The children elements.
+ * @param {boolean} [props.open] - Controlled open/close state.
+ * @param {Function} [props.setOpen] - Callback function to update open state.
+ * @param {boolean} [props.animate=true] - Whether to animate transition.
+ * @returns {React.JSX.Element} The rendered Provider component.
+ */
 export const SidebarProvider = ({
     children,
     open: openProp,
@@ -33,6 +49,16 @@ export const SidebarProvider = ({
     );
 };
 
+/**
+ * Sidebar component that initializes the SidebarProvider context.
+ *
+ * @param {object} props - The component props.
+ * @param {React.ReactNode} props.children - The children elements.
+ * @param {boolean} [props.open] - Controlled open/close state.
+ * @param {Function} [props.setOpen] - Callback function to update open state.
+ * @param {boolean} [props.animate=true] - Whether to animate transition.
+ * @returns {React.JSX.Element} The rendered Sidebar component.
+ */
 export const Sidebar = ({
     children,
     open,
@@ -46,6 +72,12 @@ export const Sidebar = ({
     );
 };
 
+/**
+ * Component that renders both Desktop and Mobile views of the Sidebar.
+ *
+ * @param {object} props - The component props.
+ * @returns {React.JSX.Element} The rendered SidebarBody.
+ */
 export const SidebarBody = (props) => {
     return (
         <>
@@ -55,6 +87,14 @@ export const SidebarBody = (props) => {
     );
 };
 
+/**
+ * Desktop sidebar component with expand/collapse animations on hover.
+ *
+ * @param {object} props - The component props.
+ * @param {string} [props.className] - Extra class name custom styling.
+ * @param {React.ReactNode} props.children - Child elements.
+ * @returns {React.JSX.Element} The rendered DesktopSidebar.
+ */
 export const DesktopSidebar = ({
     className,
     children,
@@ -83,6 +123,14 @@ export const DesktopSidebar = ({
     );
 };
 
+/**
+ * Mobile sidebar component with toggle menu bar and responsive slide-out drawer overlay.
+ *
+ * @param {object} props - The component props.
+ * @param {string} [props.className] - Extra class name custom styling.
+ * @param {React.ReactNode} props.children - Child elements.
+ * @returns {React.JSX.Element} The rendered MobileSidebar.
+ */
 export const MobileSidebar = ({
     className,
     children,
@@ -133,6 +181,16 @@ export const MobileSidebar = ({
     );
 };
 
+/**
+ * Navigation item link within the Sidebar.
+ *
+ * @param {object} props - The component props.
+ * @param {object} props.link - The link item data (label, href, icon).
+ * @param {string} [props.className] - Extra class name custom styling.
+ * @param {boolean} [props.active] - Override active link styling status.
+ * @param {Function} [props.onClick] - Click callback handler.
+ * @returns {React.JSX.Element} The rendered SidebarLink.
+ */
 export const SidebarLink = ({
     link,
     className,
@@ -175,6 +233,11 @@ export const SidebarLink = ({
     );
 };
 
+/**
+ * Divider line component that animates dynamically when Sidebar collapses.
+ *
+ * @returns {React.JSX.Element} The rendered SidebarDivider.
+ */
 export const SidebarDivider = () => {
     const { open, animate } = useSidebarInternal();
     return (
