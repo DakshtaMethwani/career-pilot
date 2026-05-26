@@ -3,6 +3,9 @@
  * Implements lazy loading for improved performance
  */
 import React, { useState, useEffect, lazy, Suspense } from 'react';
+import StockTicker from "./components/portfolio/templates/Finance_Corporate/StockTicker";
+
+import React, { useState, useEffect } from 'react';
 import Deployments from './pages/Deployments'
 import TemplateGallery from "./pages/TemplateGallery";
 
@@ -29,7 +32,7 @@ import JobAlerts from './pages/JobAlerts';
 const ResumeBuilder = lazy(() => import('./pages/ResumeBuilder'));
 import TextToResume from './pages/TextToResume';
 import About from './components/portfolio/templates/Tech_Startup/About';
-
+import ChatbotPortfolio from "./components/portfolio/templates/Chatbot_Portfolio";
 
 import JobTracker from './pages/JobTracker';
 const Community = lazy(() => import('./pages/Community'));
@@ -173,7 +176,7 @@ function AppRoutes() {
 
         {/* Template Gallery Route (Registered at /templates) */}
         <Route path="/templates" element={<TemplateGallery />} />
-
+        <Route path="/templates/chatbot" element={<ChatbotPortfolio />} />
         {/* Core Protected Routes */}
         <Route 
   path="/dashboard" 
