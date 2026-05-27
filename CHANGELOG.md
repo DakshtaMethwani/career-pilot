@@ -1,3 +1,10 @@
+# [1.44.0](https://github.com/anurag3407/career-pilot/compare/v1.43.1...v1.44.0) (2026-05-27)
+
+
+### Features
+
+* Implemented Cinematic Theme Hero Section ([#1426](https://github.com/anurag3407/career-pilot/issues/1426)) ([910f8d1](https://github.com/anurag3407/career-pilot/commit/910f8d1df8107d92965a464e8d19a311a60601f1))
+
 ## [1.43.1](https://github.com/anurag3407/career-pilot/compare/v1.43.0...v1.43.1) (2026-05-27)
 
 
