@@ -1,20 +1,37 @@
 import Razorpay from 'razorpay';
 import crypto from 'crypto';
 
-let razorpay = null;
+let razorpayInstance = null;
 
 const getRazorpay = () => {
-  if (razorpay) return razorpay;
-  const keyId = process.env.RAZORPAY_KEY_ID;
-  const keySecret = process.env.RAZORPAY_KEY_SECRET;
-  if (!keyId || !keySecret) {
-    const err = new Error('RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET are required for payment features');
-    err.statusCode = 503;
-    throw err;
-  }
-  razorpay = new Razorpay({ key_id: keyId, key_secret: keySecret });
-  return razorpay;
+    if (razorpayInstance) return razorpayInstance;
+    const keyId = process.env.RAZORPAY_KEY_ID;
+    const keySecret = process.env.RAZORPAY_KEY_SECRET;
+    
+    if (!keyId || !keySecret) {
+        if (process.env.NODE_ENV === 'production') {
+            throw new Error('Razorpay key_id and key_secret are required in production');
+        }
+        console.warn('⚠️ Razorpay credentials missing. Using dummy credentials for startup.');
+    }
+    
+    razorpayInstance = new Razorpay({
+        key_id: keyId || 'dummy_key',
+        key_secret: keySecret || 'dummy_secret'
+    });
+    return razorpayInstance;
 };
+
+const razorpay = new Proxy({}, {
+    get: (target, prop) => {
+        const instance = getRazorpay();
+        const value = instance[prop];
+        if (typeof value === 'function') {
+            return value.bind(instance);
+        }
+        return value;
+    }
+});
 
 /**
  * Create a Razorpay order for escrow payment
@@ -24,6 +41,9 @@ const getRazorpay = () => {
  * @returns {Promise<object>} Razorpay order object
  */
 export const createOrder = async (amount, receipt, notes = {}) => {
+     if (!razorpay) {
+        throw new Error('Razorpay is not configured');
+    }
     const options = {
         amount: Math.round(amount * 100), // Razorpay expects amount in paise
         currency: 'INR',
@@ -76,6 +96,9 @@ export const verifyPaymentSignature = (orderId, paymentId, signature) => {
  * @returns {Promise<object>} Order details
  */
 export const getOrder = async (orderId) => {
+    if (!razorpay) {
+    throw new Error('Razorpay is not configured');
+}
     try {
         return await getRazorpay().orders.fetch(orderId);
     } catch (error) {
@@ -90,6 +113,9 @@ export const getOrder = async (orderId) => {
  * @returns {Promise<object>} Payment details
  */
 export const getPayment = async (paymentId) => {
+    if (!razorpay) {
+    throw new Error('Razorpay is not configured');
+}
     try {
         return await getRazorpay().payments.fetch(paymentId);
     } catch (error) {
