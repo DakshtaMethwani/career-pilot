@@ -318,13 +318,19 @@ export default function FigmaCanvas() {
   }, []);
 
   useEffect(() => {
+    const isEditable = (t) =>
+      t instanceof HTMLElement &&
+      (t.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON'].includes(t.tagName));
+
     const onKeyDown = (e) => {
+      if (isEditable(e.target)) return;
       if (e.code === 'Space' && !e.repeat) {
         e.preventDefault();
         setSpaceHeld(true);
       }
     };
     const onKeyUp = (e) => {
+      if (isEditable(e.target)) return;
       if (e.code === 'Space') {
         setSpaceHeld(false);
         isPanningRef.current = false;
