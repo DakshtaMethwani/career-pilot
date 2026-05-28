@@ -385,6 +385,14 @@ router.post('/optimize-linkedin', verifyToken, extractAIProvider, aiRateLimiter,
 // Streaming endpoint for resume enhancement
 router.post('/stream', verifyToken, extractAIProvider, aiRateLimiter, asyncHandler(async (req, res) => {
   const { resumeText, preferences } = req.body;
+  let isAborted = false;
+
+  const markAborted = () => {
+    isAborted = true;
+  };
+
+  req.once('close', markAborted);
+  res.once('close', markAborted);
 
   if (!resumeText || !resumeText.trim()) {
     throw new ApiError(400, 'Resume text is required');
@@ -397,6 +405,7 @@ router.post('/stream', verifyToken, extractAIProvider, aiRateLimiter, asyncHandl
   const stream = createSSEStream(res);
 
   try {
+    if (isAborted) return;
     stream.sendProgress(10, 'Initializing AI model...');
 
     const validatedPreferences = {
@@ -408,6 +417,8 @@ router.post('/stream', verifyToken, extractAIProvider, aiRateLimiter, asyncHandl
     };
 
     stream.sendProgress(20, 'Preparing prompt...');
+
+  if (isAborted) return;
 
     const provider = req.aiProvider;
     const systemPrompt = getSystemPrompt(
@@ -423,8 +434,11 @@ router.post('/stream', verifyToken, extractAIProvider, aiRateLimiter, asyncHandl
 
     stream.sendProgress(30, 'Processing resume with AI...');
 
+    if (isAborted) return;
+
     if (!provider.generateContentStream) {
       const result = await provider.generateContent(prompt);
+      if (isAborted) return;
       stream.sendChunk(result.text, true);
       stream.sendDone({ tokensUsed: result.usage });
       stream.endStream();
@@ -436,6 +450,11 @@ router.post('/stream', verifyToken, extractAIProvider, aiRateLimiter, asyncHandl
     let lastProgress = 30;
 
     for await (const chunk of await provider.generateContentStream(prompt)) {
+      if (isAborted) {
+        stream.endStream();
+        return;
+      }
+
       if (chunk.done) {
         tokensUsed = chunk.usage || tokensUsed;
         stream.sendDone({ tokensUsed });
@@ -458,9 +477,15 @@ router.post('/stream', verifyToken, extractAIProvider, aiRateLimiter, asyncHandl
     stream.endStream();
 
   } catch (error) {
+    if (isAborted) {
+      return;
+    }
     console.error('Streaming enhancement error:', error);
     stream.sendError(error.message || 'Failed to enhance resume');
     stream.endStream();
+  } finally {
+    req.off('close', markAborted);
+    res.off('close', markAborted);
   }
 }));
 
