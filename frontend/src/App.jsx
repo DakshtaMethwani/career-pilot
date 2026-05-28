@@ -66,6 +66,7 @@ import CareerGrowthHub from './pages/hubs/CareerGrowthHub';
 import CommunityHub from './pages/hubs/CommunityHub';
 const GitHubDashboard = lazy(() => import('./pages/GitHubDashboard'));
 import ScrollToTop from "./components/ScrollToTop";
+import RainforestCanopy from './components/portfolio/templates/Rainforest_Canopy/index.jsx';
 import TestSocialLinks from './pages/TestSocialLinks';
 
 function ProtectedRoute({ children }) {
@@ -181,6 +182,7 @@ function AppRoutes() {
         <Route path="/templates/chatbot" element={<ChatbotPortfolio />} />
 main
         <Route path="/templates/day-night-cycle" element={<DayNightCycle />} />
+        <Route path="/templates/rainforest-canopy" element={<RainforestCanopy />} />
         {/* Core Protected Routes */}
         <Route 
   path="/dashboard" 
