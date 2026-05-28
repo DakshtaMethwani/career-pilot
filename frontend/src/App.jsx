@@ -62,6 +62,7 @@ import CareerGrowthHub from './pages/hubs/CareerGrowthHub';
 import CommunityHub from './pages/hubs/CommunityHub';
 import GitHubDashboard from './pages/GitHubDashboard';
 import ScrollToTop from "./components/ScrollToTop";
+import RainforestCanopy from './components/portfolio/templates/Rainforest_Canopy/index.jsx';
 
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
@@ -172,6 +173,7 @@ function AppRoutes() {
         <Route path="/templates" element={<TemplateGallery />} />
         <Route path="/templates/chatbot" element={<ChatbotPortfolio />} />
         <Route path="/templates/day-night-cycle" element={<DayNightCycle />} />
+        <Route path="/templates/rainforest-canopy" element={<RainforestCanopy />} />
         {/* Core Protected Routes */}
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
         <Route path="/upload" element={<ProtectedRoute><Upload /></ProtectedRoute>} />
