@@ -187,17 +187,27 @@
 
 @media (prefers-reduced-motion: reduce) {
   .synth-sun::after,
-  .tree-sway-left,
-  .tree-sway-right,
-  .purple-dust-1,
-  .purple-dust-2,
-  .purple-dust-3 {
+  .hero-road-inner {
     animation: none !important;
   }
 
-  .hero-road-inner {
-    animation-duration: 8s !important;
-    animation-timing-function: linear !important;
-    animation-iteration-count: infinite !important;
+  .tree-sway-left {
+    animation-duration: 12s !important;
+  }
+
+  .tree-sway-right {
+    animation-duration: 14s !important;
+  }
+
+  .purple-dust-1 {
+    animation-duration: 60s !important;
+  }
+
+  .purple-dust-2 {
+    animation-duration: 80s !important;
+  }
+
+  .purple-dust-3 {
+    animation-duration: 100s !important;
   }
 }
