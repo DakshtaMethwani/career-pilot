@@ -7,8 +7,10 @@ import { Moon, Sun, ChevronDown, Check, Eye, Star } from "lucide-react";
 import HolographicAbout from "../components/portfolio/templates/Holographic/About";
 import CulinaryAbout from "../components/portfolio/templates/Culinary_Restaurant/About";
 import TechStartupHero from "../components/portfolio/templates/Tech_Startup/Hero";
-import ArchitectureBlueprintHero from "../components/portfolio/templates/Architecture_Blueprint/Hero";
 import GeometricShapesAbout from "../components/portfolio/templates/Geometric_Shapes/About";
+import ChooseAdventurePortfolio from "../components/portfolio/templates/Choose_Adventure/index";
+import WeatherMood from "../components/portfolio/templates/Weather_Mood/index";
+import SwissTypography from "../components/portfolio/templates/Swiss_Typography/index";
 import GeometricShapesHero from "../components/portfolio/templates/Geometric_Shapes/Hero";
 import LiquidGlass from "../components/portfolio/templates/Liquid_Glass/index";
 import MidnightGradient from "../components/portfolio/templates/Midnight_Gradient/index";
@@ -19,7 +21,6 @@ import { X } from "lucide-react";
 // import ChooseAdventurePortfolio from "../components/portfolio/templates/Choose_Adventure/index";
 // import RetroProjects from "../components/portfolio/templates/2D_Retro_8bit/Projects";
 // import FantasyRPGProjects from "../components/portfolio/templates/Fantasy_RPG/Projects";
-import GraffitiHero from "../components/portfolio/templates/Graffiti_StreetArt/Hero";
 
 
 function FilterSelect({ value, onChange, options, className = "" }) {
@@ -135,7 +136,17 @@ function TemplateCard({ template, onUse }) {
             rest: { scale: 1, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } },
             hover: { scale: 1.08, transition: { type: "spring", stiffness: 200, damping: 25 } },
           }}
+          onError={(e) => {
+            e.target.style.display = 'none';
+            e.target.nextSibling.style.display = 'flex';
+          }}
         />
+        <div 
+          className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-purple-500/20 to-pink-500/20 items-center justify-center"
+          style={{ display: 'none' }}
+        >
+          <span className="text-white/60 text-sm font-medium">{template.title}</span>
+        </div>
         <motion.div
           className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"
           variants={{ rest: { opacity: 0 }, hover: { opacity: 1 } }}
@@ -375,6 +386,12 @@ export default function TemplateGallery() {
         portfolioTitle={selectedPortfolioTitle}
       />
 
+      <TemplatePreviewModal
+        templateId={previewTemplateId}
+        isOpen={!!previewTemplateId}
+        onClose={() => setPreviewTemplateId(null)}
+      />
+
       {/* Holographic Theme */}
       <div className="mt-12">
         <div className="mb-4 flex items-center gap-3 px-1">
@@ -478,12 +495,40 @@ export default function TemplateGallery() {
         </div>
       </div>
 
+      <div className="mt-12">
+        <div className="mb-4 flex items-center gap-3 px-1">
+          <span className="rounded-full bg-red-500/20 px-3 py-1 text-xs font-bold uppercase tracking-widest text-red-400 border border-red-500/30">
+            Preview
+          </span>
+          <h2 className="text-lg font-semibold text-foreground/70">Swiss Typography — Full Interactive Template</h2>
+        </div>
+        <div className="overflow-hidden rounded-2xl border border-border">
+          <SwissTypography />
+        </div>
+      </div>
+      {/* Cherry Blossom Theme */}
+      <div className="mt-12">
+        <div className="mb-4 flex items-center gap-3 px-1">
+          <span className="rounded-full bg-rose-500/20 px-3 py-1 text-xs font-bold uppercase tracking-widest text-rose-400 border border-rose-500/30">
+            🌸 NEW — Cherry Blossom
+          </span>
+          <h2 className="text-lg font-semibold text-foreground/70">Cherry Blossom Theme — Digital Spring</h2>
+        </div>
+        <div className="overflow-hidden rounded-2xl border border-rose-500/20">
+          <CherryBlossom />
+        </div>
+      </div>
+
       {/* Commented out — templates not yet available locally */}
       {/* <ChooseAdventurePortfolio /> */}
       {/* <RetroProjects /> */}
       {/* <FantasyRPGProjects /> */}
-      {/* <GraffitiHero /> */}
 
+      <TemplatePreviewModal
+        templateId={previewTemplateId}
+        isOpen={!!previewTemplateId}
+        onClose={() => setPreviewTemplateId(null)}
+      />
     </div>
   );
 }
