@@ -20,15 +20,7 @@ import Home from './pages/Home';
 const Dashboard = lazy(() => import('./pages/Dashboard'));
 const JobSearch = lazy(() => import('./pages/JobSearch'));
 const ResumeBuilder = lazy(() => import('./pages/ResumeBuilder'));
-const TextToResume = lazy(() => import("./pages/TextToResume"));
-// import TextToResume from './pages/TextToResume';
-import About from './components/portfolio/templates/Tech_Startup/About';
-import ChatbotPortfolio from "./components/portfolio/templates/Chatbot_Portfolio";
-import GamifiedXP from "./components/portfolio/templates/Gamified_XP";
-import TelescopeZoom from "./components/portfolio/templates/Telescope_Zoom";
 
-const JobTracker = lazy(() => import("./pages/JobTracker"));
-// import JobTracker from './pages/JobTracker';
 const Community = lazy(() => import('./pages/Community'));
 const Login = lazy(() => import("./pages/Login"));
 const Register = lazy(() => import("./pages/Register"));
