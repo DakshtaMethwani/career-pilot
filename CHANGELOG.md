@@ -1,3 +1,10 @@
+## [1.98.1](https://github.com/anurag3407/career-pilot/compare/v1.98.0...v1.98.1) (2026-05-30)
+
+
+### Bug Fixes
+
+* make ProjectVisualizer Landing page theme-aware ([3abafed](https://github.com/anurag3407/career-pilot/commit/3abafedde1e16c8c8025679ac6b1367a90b0cf73)), closes [#050505](https://github.com/anurag3407/career-pilot/issues/050505) [#111](https://github.com/anurag3407/career-pilot/issues/111)
+
 # [1.98.0](https://github.com/anurag3407/career-pilot/compare/v1.97.0...v1.98.0) (2026-05-30)
 
 
