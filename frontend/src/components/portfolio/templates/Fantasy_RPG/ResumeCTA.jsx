@@ -27,6 +27,11 @@ export default function ResumeCTA({
   const [visible, setVisible] = useState(false);
   const [glowPulse, setGlowPulse] = useState(false);
   const sectionRef = useRef(null);
+  const sanitizeUrl = (url) => {
+  if (!url || url === '#') return '#';
+  if (/^https?:\/\//i.test(url)) return url;
+  return '#';
+};
 
   // Fade-in on scroll (matches Projects.jsx pattern)
   useEffect(() => {
@@ -39,7 +44,11 @@ export default function ResumeCTA({
       },
       { threshold: 0.1 }
     );
-    if (sectionRef.current) observer.observe(sectionRef.current);
+    if ('IntersectionObserver' in window) {
+      if (sectionRef.current) observer.observe(sectionRef.current);
+    } else {
+      setVisible(true);
+    }
     return () => observer.disconnect();
   }, []);
 
@@ -52,7 +61,8 @@ export default function ResumeCTA({
   return (
     <>
       {/* ── Fonts & Animations (same as Projects.jsx) ── */}
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=MedievalSharp&family=Inter:wght@400;500;600&display=swap');
 
         .font-fantasy-title { font-family: 'Cinzel', serif; }
@@ -134,9 +144,8 @@ export default function ResumeCTA({
       <section
         id="resume-cta"
         ref={sectionRef}
-        className={`relative min-h-screen w-full bg-[#0a090e] text-amber-100/90 py-20 px-4 sm:px-6 lg:px-8 border-t-4 border-b-4 border-amber-900/60 overflow-hidden select-none transition-all duration-700 ${
-          visible ? 'opacity-100' : 'opacity-0'
-        }`}
+        className={`relative min-h-screen w-full bg-[#0a090e] text-amber-100/90 py-20 px-4 sm:px-6 lg:px-8 border-t-4 border-b-4 border-amber-900/60 overflow-hidden select-none transition-all duration-700 ${visible ? 'opacity-100' : 'opacity-0'
+          }`}
       >
         {/* Background dot pattern */}
         <div className="absolute inset-0 bg-[radial-gradient(#201910_1px,transparent_1px)] [background-size:32px_32px] pointer-events-none opacity-45" />
@@ -224,7 +233,7 @@ export default function ResumeCTA({
             <div className="relative mb-8 p-5 rounded-lg text-center"
               style={{ background: 'rgba(180,140,59,0.06)', border: '1px solid rgba(180,140,59,0.2)' }}>
               <BookOpen className="absolute top-3 left-3 w-4 h-4 text-amber-700/50" />
-              <Gem    className="absolute top-3 right-3 w-4 h-4 text-amber-700/50" />
+              <Gem className="absolute top-3 right-3 w-4 h-4 text-amber-700/50" />
               <p className="font-fantasy-body text-sm leading-relaxed italic text-amber-200/70 px-4">
                 "Herein lies the complete chronicle of this hero's conquests — every battle fought,
                 every arcane framework mastered, every kingdom of code erected from nothing.
@@ -242,7 +251,7 @@ export default function ResumeCTA({
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a
-                href={resumeUrl}
+                href={sanitizeUrl(resumeUrl)}
                 className="rpg-btn-primary font-fantasy-title font-bold text-sm tracking-widest uppercase px-8 py-4 rounded-lg flex items-center gap-3 cursor-pointer cta-beacon"
               >
                 <Download className="w-4 h-4" />
@@ -250,7 +259,7 @@ export default function ResumeCTA({
               </a>
 
               <a
-                href={portfolioUrl}
+                href={sanitizeUrl(portfolioUrl)}
                 className="rpg-btn-secondary font-fantasy-title font-bold text-sm tracking-widest uppercase px-8 py-4 rounded-lg flex items-center gap-3 cursor-pointer"
               >
                 <Sparkles className="w-4 h-4" />
