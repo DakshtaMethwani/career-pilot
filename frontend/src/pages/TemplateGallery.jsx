@@ -23,6 +23,7 @@ import { useSearchParams } from "react-router-dom";
 // import ChooseAdventurePortfolio from "../components/portfolio/templates/Choose_Adventure/index";
 // import RetroProjects from "../components/portfolio/templates/2D_Retro_8bit/Projects";
 // import FantasyRPGProjects from "../components/portfolio/templates/Fantasy_RPG/Projects";
+import MorphingBlobs from "../components/portfolio/templates/Morphing_Blobs/index";
 
 
 function FilterSelect({ value, onChange, options, className = "" }) {
