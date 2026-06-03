@@ -64,13 +64,10 @@ function ExperienceRow({ exp, index, inView }) {
       initial={{ opacity: 0, x: -20 }} animate={inView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.55, delay: 0.2 + index * 0.1 }}
       style={{
-        padding: '1.75rem',
-        background: S.card,
+        padding: '1.75rem', background: S.card,
         border: `1px solid ${exp.current ? S.red + '30' : S.border}`,
-        marginBottom: '1rem',
-        position: 'relative', overflow: 'hidden',
+        marginBottom: '1rem', position: 'relative', overflow: 'hidden',
       }}>
-
       {exp.current && (
         <div style={{
           position: 'absolute', top: 0, left: 0, bottom: 0, width: '3px',
@@ -130,7 +127,6 @@ export default function ResumeCTA() {
     <section ref={ref} style={{ background: S.bg, padding: '5rem 0', fontFamily: "'Inter', sans-serif" }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.25rem' }}>
 
-        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, x: -20 }} animate={inView ? { opacity: 1, x: 0 } : {}}
           style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
@@ -141,10 +137,9 @@ export default function ResumeCTA() {
           <div style={{ flex: 1, height: '1px', background: `linear-gradient(90deg, ${S.border}, transparent)` }} />
         </motion.div>
 
-        <div style={{ display: 'grid', gap: '3rem' }} className="lg:grid-cols-3">
+        <div className="grid lg:grid-cols-3" style={{ gap: '3rem' }}>
 
-          {/* Main: experience */}
-          <div style={{ gridColumn: 'span 2' }} className="lg:col-span-2">
+          <div className="lg:col-span-2">
             <motion.h2
               initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.1 }}
@@ -161,14 +156,11 @@ export default function ResumeCTA() {
             ))}
           </div>
 
-          {/* Sidebar: certifications + CTA */}
           <div>
             <motion.div
               initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.4 }}
-              style={{
-                padding: '2rem', background: S.card, border: `1px solid ${S.border}`, marginBottom: '1.5rem',
-              }}>
+              style={{ padding: '2rem', background: S.card, border: `1px solid ${S.border}`, marginBottom: '1.5rem' }}>
               <p style={{ fontSize: '0.65rem', fontWeight: 800, letterSpacing: '0.22em', color: S.gold, textTransform: 'uppercase', marginBottom: '1.5rem' }}>
                 Certifications
               </p>
@@ -178,7 +170,8 @@ export default function ResumeCTA() {
                   transition={{ delay: 0.5 + i * 0.07 }}
                   style={{
                     display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start',
-                    padding: '0.75rem 0', borderBottom: i < CERTIFICATIONS.length - 1 ? `1px solid ${S.border}` : 'none',
+                    padding: '0.75rem 0',
+                    borderBottom: i < CERTIFICATIONS.length - 1 ? `1px solid ${S.border}` : 'none',
                     gap: '0.5rem',
                   }}>
                   <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}>
@@ -190,19 +183,15 @@ export default function ResumeCTA() {
               ))}
             </motion.div>
 
-            {/* Download CTA */}
+            {/* Fix: render as <a> so Download PDF is functional */}
             <motion.div
               initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.65 }}
-              style={{
-                padding: '2rem', background: S.red, position: 'relative', overflow: 'hidden',
-              }}>
-              {/* Speed line accent */}
+              style={{ padding: '2rem', background: S.red, position: 'relative', overflow: 'hidden' }}>
               <div style={{
                 position: 'absolute', inset: 0, pointerEvents: 'none', opacity: 0.07,
                 background: 'repeating-linear-gradient(105deg, transparent, transparent 20px, rgba(255,255,255,0.5) 21px, transparent 22px)',
               }} />
-
               <Zap size={24} color="white" fill="white" style={{ marginBottom: '1rem' }} />
               <h3 style={{ fontSize: '0.9rem', fontWeight: 900, color: 'white', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>
                 Full Athletic Resume
@@ -210,18 +199,20 @@ export default function ResumeCTA() {
               <p style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.75)', lineHeight: 1.65, marginBottom: '1.5rem' }}>
                 Download the complete career profile, competition history, and performance metrics.
               </p>
-              <motion.button
+              <motion.a
+                href="/resume-placeholder.pdf"
+                download
                 whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
                 style={{
                   display: 'flex', alignItems: 'center', gap: '0.6rem', width: '100%',
                   justifyContent: 'center', padding: '0.85rem',
                   background: 'rgba(0,0,0,0.25)', color: 'white',
-                  border: '1px solid rgba(255,255,255,0.3)', cursor: 'pointer',
+                  border: '1px solid rgba(255,255,255,0.3)', textDecoration: 'none',
                   fontSize: '0.72rem', fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase',
                 }}>
                 <Download size={15} />
                 Download PDF
-              </motion.button>
+              </motion.a>
             </motion.div>
           </div>
         </div>
