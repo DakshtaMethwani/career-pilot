@@ -8,6 +8,7 @@ import BodyLanguageTips from '../components/BodyLanguageTips';
 import VoiceToTextButton from '../components/VoiceToTextButton';
 import { interviewApi, uploadApi } from '../services/api';
 import ConfidenceMeter from "../components/ConfidenceMeter";
+import LearningRecommendations from "../components/LearningRecommendations";
 
 // Device and browser detection utilities
 const isMobileDevice = () => {
@@ -1617,6 +1618,11 @@ export default function InterviewPrep() {
                 </ul>
               </div>
             </motion.div>
+            <LearningRecommendations
+  areasToImprove={
+    overallResults.overallFeedback?.areasToImprove || []
+  }
+/>
           </div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="mb-8">

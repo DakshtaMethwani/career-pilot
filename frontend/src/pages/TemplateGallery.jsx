@@ -522,6 +522,7 @@ const [hoveredCard, setHoveredCard] = useState(null);
           <h2 className="text-lg font-semibold text-foreground/70">Culinary Restaurant Theme — About Section</h2>
         </div>
         <div className="overflow-hidden rounded-2xl border border-border"><CulinaryAbout /></div>
+        
       <TemplatePreviewModal
         templateId={previewTemplateId}
         isOpen={!!previewTemplateId}
@@ -809,5 +810,7 @@ const [hoveredCard, setHoveredCard] = useState(null);
             </div>
       </div>
     </div>
+    </div>
+  
   );
 }
