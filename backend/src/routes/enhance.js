@@ -1,5 +1,5 @@
 import express from 'express';
-import { enhanceResume, generateSummary, suggestImprovements, analyzeATSScore, analyzeResumeComprehensive, analyzeBulletPoints, generateBeforeAfter, getVerbLists, getSystemPrompt } from '../config/langchain.js';
+import { enhanceResume, generateSummary, suggestImprovements, analyzeATSScore, analyzeResumeComprehensive, analyzeBulletPoints, generateBeforeAfter, getVerbLists, getSystemPrompt, analyzeSkillGap } from '../config/langchain.js';
 import { computeATSScore } from '../services/atsScorer.js';
 import { generateEmails } from '../services/emailGeneratorService.js';
 import { predictTrajectory } from '../services/ai/careerTrajectory.js';
@@ -18,6 +18,7 @@ import {
   generateEmailSchema,
   optimizeLinkedInSchema,
   resumeScoreSchema,
+  skillGapSchema,
 } from '../schemas/enhance.schema.js';
 
 const router = express.Router();
@@ -379,9 +380,36 @@ router.post('/optimize-linkedin', verifyToken, extractAIProvider, aiRateLimiter,
   res.json(result);
 }));
 
+// Analyze skill gap between resume and job description
+router.post('/skill-gap', verifyToken, extractAIProvider, aiRateLimiter, validate(skillGapSchema), asyncHandler(async (req, res) => {
+  const { resumeText, jobDescription } = req.body;
+
+  try {
+    const result = await analyzeSkillGap(resumeText, jobDescription, req.aiProvider);
+
+    res.json({
+      success: true,
+      data: result.analysis,
+      provider: result.provider,
+      providerSource: req.aiProviderSource
+    });
+  } catch (error) {
+    console.error('Skill gap analysis error:', error);
+    throw new ApiError(500, 'Failed to analyze skill gap. Please try again.');
+  }
+}));
+
 // Streaming endpoint for resume enhancement
 router.post('/stream', verifyToken, extractAIProvider, aiRateLimiter, asyncHandler(async (req, res) => {
   const { resumeText, preferences } = req.body;
+  let isAborted = false;
+
+  const markAborted = () => {
+    isAborted = true;
+  };
+
+  req.once('close', markAborted);
+  res.once('close', markAborted);
 
   if (!resumeText || !resumeText.trim()) {
     throw new ApiError(400, 'Resume text is required');
@@ -394,6 +422,7 @@ router.post('/stream', verifyToken, extractAIProvider, aiRateLimiter, asyncHandl
   const stream = createSSEStream(res);
 
   try {
+    if (isAborted) return;
     stream.sendProgress(10, 'Initializing AI model...');
 
     const validatedPreferences = {
@@ -405,6 +434,8 @@ router.post('/stream', verifyToken, extractAIProvider, aiRateLimiter, asyncHandl
     };
 
     stream.sendProgress(20, 'Preparing prompt...');
+
+  if (isAborted) return;
 
     const provider = req.aiProvider;
     const systemPrompt = getSystemPrompt(
@@ -420,8 +451,11 @@ router.post('/stream', verifyToken, extractAIProvider, aiRateLimiter, asyncHandl
 
     stream.sendProgress(30, 'Processing resume with AI...');
 
+    if (isAborted) return;
+
     if (!provider.generateContentStream) {
       const result = await provider.generateContent(prompt);
+      if (isAborted) return;
       stream.sendChunk(result.text, true);
       stream.sendDone({ tokensUsed: result.usage });
       stream.endStream();
@@ -433,6 +467,11 @@ router.post('/stream', verifyToken, extractAIProvider, aiRateLimiter, asyncHandl
     let lastProgress = 30;
 
     for await (const chunk of await provider.generateContentStream(prompt)) {
+      if (isAborted) {
+        stream.endStream();
+        return;
+      }
+
       if (chunk.done) {
         tokensUsed = chunk.usage || tokensUsed;
         stream.sendDone({ tokensUsed });
@@ -455,9 +494,15 @@ router.post('/stream', verifyToken, extractAIProvider, aiRateLimiter, asyncHandl
     stream.endStream();
 
   } catch (error) {
+    if (isAborted) {
+      return;
+    }
     console.error('Streaming enhancement error:', error);
     stream.sendError(error.message || 'Failed to enhance resume');
     stream.endStream();
+  } finally {
+    req.off('close', markAborted);
+    res.off('close', markAborted);
   }
 }));
 
