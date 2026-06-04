@@ -678,6 +678,21 @@ function TemplateCard({ template, hovered, onHover, onLeave, onUse, aiDraft }) {
           <FilterSelect value={layout} onChange={setLayout} options={LAYOUT_OPTIONS} />
           <FilterSelect value={sort} onChange={setSort} options={SORT_OPTIONS} className="ml-auto" />
         </div>
+        <div className="overflow-hidden rounded-2xl border border-border"><CulinaryAbout /></div>
+        
+      <TemplatePreviewModal
+        templateId={previewTemplateId}
+        isOpen={!!previewTemplateId}
+        onClose={() => {
+          if (searchParams.has("preview")) {
+            // Check if there is history to go back to, so we pop the preview state cleanly
+            window.history.back();
+          } else {
+            setSearchParams({}, { replace: true });
+          }
+        }}
+        portfolioData={aiDraft}
+      />
 
         {sortedTemplates.length === 0 ? (
           <div className="text-center text-muted-foreground mt-12 text-xl">
@@ -905,5 +920,7 @@ function TemplateCard({ template, hovered, onHover, onLeave, onUse, aiDraft }) {
             </div>
       </div>
     </div>
+    </div>
+  
   );
 }
