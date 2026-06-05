@@ -1,3 +1,10 @@
+# [1.159.0](https://github.com/anurag3407/career-pilot/compare/v1.158.0...v1.159.0) (2026-06-05)
+
+
+### Features
+
+* implement Glassmorphism FloatingWidgets section ([1df7df7](https://github.com/anurag3407/career-pilot/commit/1df7df7d036be8b0ee047746b8a72e362e1f0153))
+
 # [1.158.0](https://github.com/anurag3407/career-pilot/compare/v1.157.0...v1.158.0) (2026-06-05)
 
 
