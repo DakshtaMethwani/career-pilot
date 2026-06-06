@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/krishsoni-hub/career-pilot-krishhub/compare/v1.0.0...v1.1.0) (2026-06-06)
+
+
+### Features
+
+* add Error 404 Infinite Gallery template [#3262](https://github.com/krishsoni-hub/career-pilot-krishhub/issues/3262) ([85acfe2](https://github.com/krishsoni-hub/career-pilot-krishhub/commit/85acfe2adcf71cc24ba4312d6b9806305cb842d2))
+
 # 1.0.0 (2026-06-06)
 
 
