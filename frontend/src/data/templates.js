@@ -1,5 +1,18 @@
 export const templates = [
-   
+ {
+  "id": "Hidden_Easter_Egg_Scavenger_Hunt",
+  "title": "Hidden Easter Egg Scavenger Hunt",
+  "category": "Portfolio",
+  "colorScheme": "Dark",
+  "layout": "Interactive",
+  "author": "prerendrarahitya1708",
+  "views": 0,
+  "rating": 4.8,
+  "image": "/template-previews/Hidden_Easter_Egg_Scavenger_Hunt.png",
+  "createdAt": "2026-06-07",
+  "isComplete": true
+},
+  
 {
   "id": "Eye_Tracking_Heatmap_Simulation",
   "title": "Eye Tracking Heatmap Simulation",
