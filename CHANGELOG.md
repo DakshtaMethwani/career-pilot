@@ -1,3 +1,10 @@
+# [1.198.0](https://github.com/anurag3407/career-pilot/compare/v1.197.1...v1.198.0) (2026-06-08)
+
+
+### Features
+
+* add skeleton loaders for JobTracker and ResumeView ([1e23514](https://github.com/anurag3407/career-pilot/commit/1e2351486fca0ea7dcac310c54c2761b78ea452e))
+
 ## [1.197.1](https://github.com/anurag3407/career-pilot/compare/v1.197.0...v1.197.1) (2026-06-08)
 
 
