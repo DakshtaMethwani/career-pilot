@@ -1,5 +1,18 @@
 export const templates = [
 {
+  "id": "Captcha_Solver_Portfolio_Gate",
+  "title": "Captcha Solver Portfolio Gate",
+  "category": "Portfolio",
+  "colorScheme": "Dark",
+  "layout": "Interactive",
+  "author": "System",
+  "views": 0,
+  "rating": 0,
+  "image": "/template-previews/Captcha_Solver_Portfolio_Gate.png",
+  "createdAt": "2026-06-09",
+  "isComplete": true
+},
+{
   "id": "Infinite_Zoom_Mandelbrot_Set",
   "title": "Infinite Zoom Mandelbrot Set",
   "category": "Portfolio",
