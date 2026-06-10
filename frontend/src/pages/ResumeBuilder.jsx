@@ -1208,7 +1208,7 @@ useEffect(() => {
 
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60">
+          <h1 className="text-3xl font-bold bg-clip-text text-transparent gradient-text">
             Resume Builder
           </h1>
           <p className="text-muted-foreground mt-2">Build a professional resume from scratch.</p>
