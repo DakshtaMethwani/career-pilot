@@ -1,3 +1,11 @@
+# [1.209.0](https://github.com/anurag3407/career-pilot/compare/v1.208.0...v1.209.0) (2026-06-10)
+
+
+### Features
+
+* complete docker setup with secure environment variables ([b051e99](https://github.com/anurag3407/career-pilot/commit/b051e9952e3567bd10aac152adf3bd762c630394))
+* setup docker containerization and fix firebase configuration layout ([5af8740](https://github.com/anurag3407/career-pilot/commit/5af87405471a8a8f960f2297a14c8879ae6a4a82))
+
 # [1.208.0](https://github.com/anurag3407/career-pilot/compare/v1.207.0...v1.208.0) (2026-06-10)
 
 
