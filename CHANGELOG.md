@@ -1,3 +1,10 @@
+# [1.214.0](https://github.com/anurag3407/career-pilot/compare/v1.213.1...v1.214.0) (2026-06-10)
+
+
+### Features
+
+* enhance template gallery with robust fallback data and live loading previews ([01955e9](https://github.com/anurag3407/career-pilot/commit/01955e93052c32919a4d3d23331a5b56761273c3))
+
 ## [1.213.1](https://github.com/anurag3407/career-pilot/compare/v1.213.0...v1.213.1) (2026-06-10)
 
 
