@@ -1,6 +1,8 @@
 import { auth } from '../config/firebase'
 import { decryptKey } from '../utils/encryption'
 
+export const apiEvents = new EventTarget();
+
 const API_BASE = import.meta.env.VITE_API_BASE || '/api';
 
 // Helper to get auth headers
@@ -114,6 +116,11 @@ async function handleResponse(response) {
         remaining: parseHeaderInt(response.headers.get('x-ratelimit-remaining')),
         reset: parseHeaderInt(response.headers.get('x-ratelimit-reset'))
       };
+    }
+
+    if (data && data.requireApiKey) {
+      error.requireApiKey = true;
+      apiEvents.dispatchEvent(new CustomEvent('missingApiKey'));
     }
 
     throw error;
