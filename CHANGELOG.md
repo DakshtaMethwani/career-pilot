@@ -1,3 +1,15 @@
+# [1.218.0](https://github.com/anurag3407/career-pilot/compare/v1.217.0...v1.218.0) (2026-06-11)
+
+
+### Bug Fixes
+
+* add portfolioApi.update, stable React keys, and fix useEffect deps in SectionEditor ([9b6fa34](https://github.com/anurag3407/career-pilot/commit/9b6fa34a1de04d56723d267cff31f1eb96bde11c))
+
+
+### Features
+
+* add SectionEditor modal component for portfolio section editing ([a1a6083](https://github.com/anurag3407/career-pilot/commit/a1a60834e288c3adfc75aa94d1f68b9e9b78d3b9))
+
 # [1.217.0](https://github.com/anurag3407/career-pilot/compare/v1.216.0...v1.217.0) (2026-06-11)
 
 
