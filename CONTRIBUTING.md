@@ -52,7 +52,7 @@ Depending on the area you contribute to, additional services may be required:
 - MongoDB (database-related features)
 - Redis (caching and background services)
 - AI provider API keys (OpenAI / Gemini / Groq)
-- RapidAPI key (job-search related features)
+- RapidAPI key (job-search-related features)
 
 > Note: For complete backend setup instructions and environment configuration, refer to CONTRIBUTION.md.
 

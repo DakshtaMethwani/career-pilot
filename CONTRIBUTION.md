@@ -70,6 +70,7 @@ Before contributing, ensure you have:
 - **Node.js** 18.0 or higher
 - **npm** or **yarn** package manager
 - **Git** for version control
+- **A GitHub account**
 - **MongoDB** (local or Atlas account)
 - **Redis** (local or cloud instance)
 - **Firebase** project (for authentication)
