@@ -1,3 +1,10 @@
+# [1.232.0](https://github.com/anurag3407/career-pilot/compare/v1.231.1...v1.232.0) (2026-06-13)
+
+
+### Features
+
+* Add Autumn Forest Leaf Fall portfolio template ([#3185](https://github.com/anurag3407/career-pilot/issues/3185)) ([1b7e5a4](https://github.com/anurag3407/career-pilot/commit/1b7e5a47ce7ed26885dcd741d5386f4deea9f62c))
+
 ## [1.231.1](https://github.com/anurag3407/career-pilot/compare/v1.231.0...v1.231.1) (2026-06-13)
 
 
