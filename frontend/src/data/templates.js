@@ -1,5 +1,19 @@
 export const templates = [
   {
+    id: "Michelin_Star_Chef_Plating",
+    title: "Michelin Star Chef Plating",
+    category: "Portfolio",
+    colorScheme: "Dark",
+    layout: "Interactive",
+    author: "System",
+    views: 0,
+    rating: 5.0,
+    image: "/templates/Michelin_Star_Chef_Plating.png",
+    createdAt: "2026-06-14",
+    isComplete: true
+  },
+
+  {
     "id": "Zen_Bamboo_Forest_Wind",
     "title": "Zen Bamboo Forest Wind",
     "category": "Portfolio",
@@ -107,9 +121,19 @@ export const templates = [
 },
 
   {
-  "id": "Vercel_Deploy",
-  "title": "Vercel Deploy",
-{
+    "id": "Vercel_Deploy",
+    "title": "Vercel Deploy",
+    "category": "Portfolio",
+    "colorScheme": "Dark",
+    "layout": "Interactive",
+    "author": "System",
+    "views": 0,
+    "rating": 5.0,
+    "image": "/template-previews/Vercel_Deploy.png",
+    "createdAt": "2026-06-14",
+    "isComplete": true
+  },
+  {
   "id": "Virtual_Reality_Room_360",
   "title": "Virtual Reality Room 360",
   "category": "Portfolio",
@@ -157,20 +181,9 @@ export const templates = [
     "author": "ShaktiShrey-01",
     "views": 0,
     "rating": 0,
-    "image": "/template-previews/Forensic_investigator_desk.png", 
-    "createdAt": "2026-06-11",
-    "isComplete": true
-  },
-  {
-    "image": "/template-previews/Endless_Runner_Minigame.png",
-    "createdAt": "2026-06-12",
-    isComplete: true
-},
-    isComplete: true,
     "image": "/template-previews/Endless_Runner_Minigame.png",
     "createdAt": "2026-06-12",
     "isComplete": true
-    "isComplete": true,
   },
   {
     "id": "Git_Commit_History_Tree",

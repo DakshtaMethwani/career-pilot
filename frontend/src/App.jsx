@@ -120,6 +120,7 @@ import TransparentDesktopOverlayOS from './components/portfolio/templates/Transp
 import Commercial_Pilot_Cockpit from './components/portfolio/templates/Commercial_Pilot_Cockpit/index.jsx';
 import Book_Page_Flip_3D_Render from './components/portfolio/templates/Book_Page_Flip_3D_Render/index.jsx';
 import IKEA_Assembly_Manual from './components/portfolio/templates/IKEA_Assembly_Manual/index.jsx';
+import MichelinStarChefPlating from './components/portfolio/templates/Michelin_Star_Chef_Plating/index.jsx';
 
 function LoadingScreen({ label }) {
   return (
@@ -291,6 +292,7 @@ function AppRoutes() {
         <Route path="/templates/commercial-pilot-cockpit" element={<Commercial_Pilot_Cockpit />} />
         <Route path="/templates/book-page-flip-3d-render" element={<Book_Page_Flip_3D_Render />} />
         <Route path="/templates/ikea-assembly-manual" element={<IKEA_Assembly_Manual />} />
+        <Route path="/templates/michelin-star-chef-plating" element={<MichelinStarChefPlating />} />
         {/* Core Protected Routes */}
         <Route 
   path="/dashboard" 
