@@ -390,6 +390,19 @@ rating: 4.8,
     "isComplete": true
   },
   {
+  "id": "AquaticBioluminescent",
+  "title": "Aquatic Bioluminescent",
+  "category": "Portfolio",
+  "colorScheme": "Ocean",
+  "layout": "Fullscreen",
+  "author": "mallya-m",
+  "views": 0,
+  "rating": 0,
+  "image": "/template-previews/AquaticBioluminescent.png",
+  "createdAt": "2026-06-16",
+  "isComplete": true
+  },
+  {
     "id": "Vercel_Deploy",
     "title": "Vercel Deploy",
     "category": "Portfolio",
@@ -2960,6 +2973,19 @@ rating: 4.8,
     "rating": 4.5,
     "image": "/template-previews/Underground_Bunker_Console.svg",
     "createdAt": "2026-06-06"
+  },
+  {
+    "id": "One_Pixel_Master",
+    "title": "One Pixel Master",
+    "category": "Portfolio",
+    "colorScheme": "Light",
+    "layout": "Minimal",
+    "author": "mallya-m",
+    "views": 0,
+    "rating": 0,
+    "image": "/template-previews/One_Pixel_Master.png",
+    "createdAt": "2026-06-13",
+    "isComplete": true
   },
   {
     "id": "Digital_Manifesto_Scroll",
