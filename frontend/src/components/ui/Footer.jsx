@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Zap, GitGraph, Twitter, Linkedin,Instagram } from "lucide-react";
+import { FEATURES } from "../../data/featuresConfig";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -21,12 +22,7 @@ export default function Footer() {
     }
   };
   const footerLinks = {
-    product: [
-      { label: "Features", href: "#features" },
-      { label: "Pricing", href: "#pricing" },
-      { label: "Job Search", href: "/jobs" },
-      { label: "Resume Builder", href: "/upload" },
-    ],
+    product: FEATURES.map(f => ({ label: f.name, href: `/${f.slug}` })),
     resources: [
       { label: "Documentation", href: "#" },
       { label: "Help Center", href: "#" },
