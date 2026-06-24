@@ -1,3 +1,10 @@
+## [1.267.1](https://github.com/anurag3407/career-pilot/compare/v1.267.0...v1.267.1) (2026-06-24)
+
+
+### Bug Fixes
+
+* **frontend:** polish portfolio builder landing hero ([#4313](https://github.com/anurag3407/career-pilot/issues/4313)) ([577178a](https://github.com/anurag3407/career-pilot/commit/577178aaf1f81b8e2fd9505dd8418facb343d2bb))
+
 # [1.267.0](https://github.com/anurag3407/career-pilot/compare/v1.266.0...v1.267.0) (2026-06-24)
 
 
