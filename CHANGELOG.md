@@ -1,3 +1,10 @@
+## [1.267.3](https://github.com/anurag3407/career-pilot/compare/v1.267.2...v1.267.3) (2026-06-24)
+
+
+### Bug Fixes
+
+* cleanup timers and prevent memory leaks in portfolio templates ([#4302](https://github.com/anurag3407/career-pilot/issues/4302)) ([b1d14dc](https://github.com/anurag3407/career-pilot/commit/b1d14dc362409a6efe788d7d8506494326292b23))
+
 ## [1.267.2](https://github.com/anurag3407/career-pilot/compare/v1.267.1...v1.267.2) (2026-06-24)
 
 
